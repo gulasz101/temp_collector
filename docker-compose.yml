@@ -1,0 +1,95 @@
+services:
+  zigbee2mqtt:
+    image: koenkk/zigbee2mqtt
+    container_name: zigbee2mqtt
+    environment:
+      - TZ=Etc/UTC
+    volumes:
+      - ./zigbee2mqtt/config/:/app/data
+      # - ./zigbee2mqtt/data:/app/data
+      - /run/udev:/run/udev:ro
+    devices:
+      # - /dev/ttyACM0:/dev/ttyACM0  
+      - "/dev/serial/by-id/usb-Itead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_V2_b2716f8592c2ef1191f1c6138148b910-if00-port0:/dev/ttyUSB0"
+    depends_on:
+      - mosquitto
+    ports:
+      - 8080:8080
+    restart: always
+
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mosquitto
+    ports:
+      - 1883:1883
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+    restart: always
+
+  node-red:
+    build: ./node-red/
+    container_name: node-red
+    # network_mode: host
+    environment:
+      - TZ=Etc/UTC
+    ports:
+      - 1880:1880
+    volumes:
+      - ./node-red/data:/data
+    depends_on:
+      - mosquitto
+      - influxdb
+    restart: always
+
+  influxdb:
+    image: influxdb:2 
+    container_name: influxdb
+    ports:
+      - 8086:8086
+    volumes:
+      - ./influxdb2/data:/var/lib/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=${DEFAULT_USERNAME}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${DEFAULT_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUXDB_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUXDB_BUCKET}
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_TOKEN}
+      - INFLUXDB_DB=sensordata
+      - INFLUXDB_ADMIN_USER=admin
+      - INFLUXDB_ADMIN_PASSWORD=adminpassword
+    restart: always
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana/data:/var/lib/grafana 
+      - ./grafana/provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_SECURITY_ADMIN_USER=${DEFAULT_USERNAME}
+      - GF_SECURITY_ADMIN_PASSWORD=${DEFAULT_PASSWORD}
+      # - INFLUXDB_USERNAME=${DEFAULT_USERNAME}
+      - INFLUXDB_URL=${INFLUXDB_URL}
+      - INFLUXDB_BUCKET=${INFLUXDB_BUCKET}
+      - INFLUXDB_TOKEN=62gms_7z5__wdtm2lKIZ3oXilda3NExC47W0bPlKGro0wz79J4a9Y9W2lKwgIkUIZlp1GXipFqgp49A-Z7EzlA==
+      # - INFLUXDB_ORG=${INFLUXDB_ORG}
+    depends_on:
+      - influxdb
+    restart: always
+  flame:
+    image: pawelmalak/flame
+    container_name: flame
+    volumes:
+      - ./flame/data:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock # optional but required for Docker integration
+    ports:
+      - 5005:5005
+    environment:
+      - PASSWORD=password
+    restart: unless-stopped
+

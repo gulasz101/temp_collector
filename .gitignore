@@ -1,0 +1,6 @@
+zigbee2mqtt/data
+zigbee2mqtt/config/log
+influxdb2/data
+grafana/data
+flame/data/db.sqlite
+flame/data/db_backups

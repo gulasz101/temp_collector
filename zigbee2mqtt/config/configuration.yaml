@@ -1,0 +1,94 @@
+homeassistant: false
+frontend: true
+mqtt:
+  base_topic: zigbee2mqtt
+  server: mqtt://mosquitto
+serial:
+  port: /dev/ttyUSB0
+  adapter: ember
+  baudrate: 115200
+  rtscts: false
+advanced:
+  network_key:
+    - 230
+    - 119
+    - 170
+    - 228
+    - 91
+    - 40
+    - 95
+    - 143
+    - 14
+    - 178
+    - 63
+    - 24
+    - 2
+    - 99
+    - 27
+    - 212
+  pan_id: 28827
+  ext_pan_id:
+    - 90
+    - 134
+    - 179
+    - 81
+    - 115
+    - 198
+    - 198
+    - 197
+  homeassistant_legacy_entity_attributes: false
+  legacy_api: false
+  legacy_availability_payload: false
+device_options:
+  legacy: false
+permit_join: true
+devices:
+  '0xa4c1385008ff4cf8':
+    friendly_name: '0xa4c1385008ff4cf8'
+    description: A (wojtek_room)
+  '0xa4c1385dbb61a3f1':
+    friendly_name: '0xa4c1385dbb61a3f1'
+    description: B - sypialnia
+  '0xa4c138af7d8eb4e3':
+    friendly_name: '0xa4c138af7d8eb4e3'
+    description: C - living room
+  '0xa4c1384e294ee94c':
+    friendly_name: '0xa4c1384e294ee94c'
+    description: D - dining room
+  '0xa4c1384b12e86743':
+    friendly_name: '0xa4c1384b12e86743'
+    description: E - bath room
+  '0xa4c138dadc816595':
+    friendly_name: '0xa4c138dadc816595'
+    description: F - sylwiak room
+  '0xa4c138305396529f':
+    friendly_name: '0xa4c138305396529f'
+    description: G (kuchnia)
+  '0xd44867fffe57ad10':
+    friendly_name: '0xd44867fffe57ad10'
+    description: dimmer (A)
+  '0xf84477fffed9d7c1':
+    friendly_name: unicorn_socket
+    description: unicorn_socket
+  '0x0c2a6ffffe452832':
+    friendly_name: '0x0c2a6ffffe452832'
+    description: nad_odkurzaczem
+  '0x0c2a6ffffe4601b8':
+    friendly_name: '0x0c2a6ffffe4601b8'
+    description: czarna_szafka
+  '0x6cfd22fffe1c88d1':
+    friendly_name: '0x6cfd22fffe1c88d1'
+    description: kuchnia
+  '0x6cfd22fffe3d5af0':
+    friendly_name: '0x6cfd22fffe3d5af0'
+    description: dimmer (B)
+  '0xd44867fffeb44721':
+    friendly_name: '0xd44867fffeb44721'
+  '0x001788010e2e0d03':
+    friendly_name: '0x001788010e2e0d03'
+  '0x44e2f8fffe5d4162':
+    friendly_name: '0x44e2f8fffe5d4162'
+  '0x08ddebfffeda288d':
+    friendly_name: '0x08ddebfffeda288d'
+ota:
+  ikea_ota_use_test_url: true
