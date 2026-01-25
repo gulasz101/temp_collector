@@ -90,5 +90,9 @@ devices:
     friendly_name: '0x44e2f8fffe5d4162'
   '0x08ddebfffeda288d':
     friendly_name: '0x08ddebfffeda288d'
+  '0x001788010dc9154b':
+    friendly_name: '0x001788010dc9154b'
+  '0x00158d00031d8a26':
+    friendly_name: '0x00158d00031d8a26'
 ota:
   ikea_ota_use_test_url: true

@@ -127,24 +127,6 @@
         ]
     },
     {
-        "id": "a46b97a710c4d449",
-        "type": "function",
-        "z": "ae566056bef5f3a3",
-        "name": "function 1",
-        "func": "if (typeof msg.payload === \"object\") {\n    // Extract fields\n    const temperature = msg.payload.temperature;\n    const humidity = msg.payload.humidity;\n    const battery = msg.payload.battery;\n    const linkquality = msg.payload.linkquality;\n    const voltage = msg.payload.voltage;\n\n\n    msg.measurement = \"LYWSD03MMC\";\n\n    msg.payload = [{\n        topic: msg.topic,\n        location: \"sleeping_room\",                  // Fields as flat key-value pairs\n        temperature: temperature,\n        humidity: humidity,\n        battery: battery,\n        linkquality: linkquality,\n        voltage: voltage,\n        \n        },\n        { location: \"sleeping_room\" }\n    ]\n    ;\n\n    // Remove undefined fields to avoid errors\n    //msg.payload.fields = Object.fromEntries(\n    //    Object.entries(msg.payload.fields).filter(([_, v]) => v !== undefined)\n    //);\n\n    // Ensure we have at least one field\n    //if (Object.keys(msg.payload.fields).length === 0) {\n    //    return null;\n    //}\n} else {\n    return null;\n}\n\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 200,
-        "y": 220,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "3c4a0deaf150e2ac",
         "type": "influxdb out",
         "z": "ae566056bef5f3a3",
@@ -968,9 +950,7 @@
         "x": 220,
         "y": 680,
         "wires": [
-            [
-                "3589f019e66479c2"
-            ]
+            []
         ]
     },
     {
@@ -1273,7 +1253,9 @@
         "x": 220,
         "y": 760,
         "wires": [
-            []
+            [
+                "29dbc3378ef0c8cd"
+            ]
         ]
     },
     {
