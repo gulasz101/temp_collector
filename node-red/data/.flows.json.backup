@@ -698,7 +698,8 @@
             [
                 "0ffbc04195792ac3",
                 "7148cbc0b54eb085",
-                "79754642c2c3fe1a"
+                "79754642c2c3fe1a",
+                "7f2783ef7393e0cd"
             ]
         ]
     },
@@ -831,7 +832,7 @@
         "expiry": "",
         "broker": "c1ecb8b21360de2b",
         "x": 880,
-        "y": 500,
+        "y": 600,
         "wires": []
     },
     {
@@ -972,6 +973,63 @@
                 "3b092b779cebb29c"
             ]
         ]
+    },
+    {
+        "id": "cbae8618c97ee058",
+        "type": "mqtt out",
+        "z": "4e32557894bc1cf4",
+        "name": "ikea_lights.POWER2",
+        "topic": "cmnd/tasmota_ikea_lights/POWER2",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c1ecb8b21360de2b",
+        "x": 900,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "7f2783ef7393e0cd",
+        "type": "function",
+        "z": "4e32557894bc1cf4",
+        "name": "tasmota_cnmd",
+        "func": "if (!['on', 'off'].includes(msg.payload.action)) {\n    return null;\n}\n\nlet out_msg = {\n    payload: 'OFF'\n};\n\nif (msg.payload.action == 'on')\n    out_msg.payload = 'ON';\n\nreturn out_msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 400,
+        "wires": [
+            [
+                "cbae8618c97ee058",
+                "a784097ec5d5e8e0"
+            ]
+        ]
+    },
+    {
+        "id": "a784097ec5d5e8e0",
+        "type": "mqtt out",
+        "z": "4e32557894bc1cf4",
+        "name": "ikea_lights.POWER1",
+        "topic": "cmnd/tasmota_ikea_lights/POWER1",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c1ecb8b21360de2b",
+        "x": 900,
+        "y": 540,
+        "wires": []
     },
     {
         "id": "d7d59c80cc607e59",
@@ -1520,7 +1578,9 @@
         "x": 220,
         "y": 820,
         "wires": [
-            []
+            [
+                "51449580271aa8f3"
+            ]
         ]
     },
     {
