@@ -1,6 +1,6 @@
 {
     "0xf84477fffed9d7c1": {
-        "state": "ON",
+        "state": "OFF",
         "power_on_behavior": "previous",
         "update": {
             "state": "idle",
@@ -30,7 +30,7 @@
         }
     },
     "0xd44867fffe57ad10": {
-        "battery": 30,
+        "battery": 70,
         "linkquality": 164,
         "update": {
             "state": "idle",
@@ -39,56 +39,56 @@
         }
     },
     "0xa4c1385dbb61a3f1": {
-        "temperature": 19.24,
-        "linkquality": 212,
-        "humidity": 65.87,
-        "battery": 100
+        "temperature": 25.59,
+        "linkquality": 136,
+        "humidity": 42.78,
+        "battery": 93
     },
     "0xa4c1384b12e86743": {
-        "temperature": 20.25,
-        "humidity": 74.18,
-        "linkquality": 212,
-        "battery": 100
+        "temperature": 25.75,
+        "humidity": 39.74,
+        "linkquality": 160,
+        "battery": 88
     },
     "0xa4c1384e294ee94c": {
-        "battery": 100,
-        "temperature": 22.09,
-        "humidity": 57.33,
+        "battery": 96,
+        "temperature": 25.86,
+        "humidity": 44.93,
         "update": {
             "state": "idle",
             "installed_version": 18427905,
             "latest_version": 18427905
         },
-        "linkquality": 212
+        "linkquality": 156
     },
     "0xa4c138af7d8eb4e3": {
-        "temperature": 21.03,
-        "humidity": 57,
+        "temperature": 25.68,
+        "humidity": 43.78,
         "update": {
             "state": "idle",
             "installed_version": 18427905,
             "latest_version": 18427905
         },
-        "linkquality": 212,
-        "battery": 89.5
+        "linkquality": 156,
+        "battery": 85.5
     },
     "0xa4c138dadc816595": {
-        "battery": 79.5,
-        "temperature": 18.72,
-        "humidity": 69.12,
+        "battery": 23.5,
+        "temperature": 23.73,
+        "humidity": 55.59,
         "update": {
             "state": "idle",
             "installed_version": 18427905,
             "latest_version": 18427905
         },
-        "linkquality": 212
+        "linkquality": 136
     },
     "0xa4c1385008ff4cf8": {
-        "battery": 87.5,
-        "temperature": 21.02,
-        "humidity": 57.74,
+        "battery": 69,
+        "temperature": 26.07,
+        "humidity": 44.06,
         "temperature_display_mode": "celsius",
-        "linkquality": 196,
+        "linkquality": 136,
         "update": {
             "state": "idle",
             "installed_version": 18427905,
@@ -96,15 +96,15 @@
         }
     },
     "0xa4c138305396529f": {
-        "battery": 90.5,
-        "temperature": 21.29,
-        "humidity": 66.39,
+        "battery": 93,
+        "temperature": 26.93,
+        "humidity": 38.44,
         "update": {
             "state": "idle",
             "installed_version": 18427905,
             "latest_version": 18427905
         },
-        "linkquality": 160
+        "linkquality": 136
     },
     "0x08ddebfffeda288d": {
         "occupancy": true,
@@ -124,14 +124,14 @@
             "installed_version": 16777287,
             "latest_version": 16777287
         },
-        "battery": 85,
+        "battery": 68,
         "linkquality": 176
     },
     "0x001788010dc9154b": {
         "update": {
-            "state": "idle",
+            "state": "available",
             "installed_version": 16787202,
-            "latest_version": 16787202
+            "latest_version": 16787456
         },
         "state": "ON",
         "brightness": 254,
@@ -140,5 +140,14 @@
     "0x00158d00031d8a26": {
         "color_mode": "xy",
         "linkquality": 208
+    },
+    "0x0c4314fffe449f91": {
+        "state": "ON",
+        "update": {
+            "state": "idle",
+            "installed_version": 304371058,
+            "latest_version": 304371058
+        },
+        "brightness": 254
     }
 }

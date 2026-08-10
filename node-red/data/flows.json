@@ -48,6 +48,14 @@
         "env": []
     },
     {
+        "id": "f34410cf8fa7c1af",
+        "type": "tab",
+        "label": "power sockets",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "c1ecb8b21360de2b",
         "type": "mqtt-broker",
         "name": "mosquitto",
@@ -1032,6 +1040,73 @@
         "wires": []
     },
     {
+        "id": "84745087b40fe95e",
+        "type": "inject",
+        "z": "4e32557894bc1cf4",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 100,
+        "y": 240,
+        "wires": [
+            [
+                "79e9bc1ff24741eb"
+            ]
+        ]
+    },
+    {
+        "id": "588410601c8b08d1",
+        "type": "mqtt out",
+        "z": "4e32557894bc1cf4",
+        "name": "dimmer_A",
+        "topic": "zigbee2mqtt/0xd44867fffe57ad10",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "c1ecb8b21360de2b",
+        "x": 430,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "79e9bc1ff24741eb",
+        "type": "function",
+        "z": "4e32557894bc1cf4",
+        "name": "dimmer_state_on",
+        "func": "return {\n    payload: {\n        action: 'on'\n    }\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 210,
+        "y": 140,
+        "wires": [
+            [
+                "588410601c8b08d1"
+            ]
+        ]
+    },
+    {
         "id": "d7d59c80cc607e59",
         "type": "mqtt in",
         "z": "4133de02911e02f1",
@@ -1311,9 +1386,7 @@
         "x": 220,
         "y": 760,
         "wires": [
-            [
-                "29dbc3378ef0c8cd"
-            ]
+            []
         ]
     },
     {
@@ -1914,12 +1987,10 @@
                 "solarEvents": "sunrise,sunset"
             }
         ],
-        "x": 220,
-        "y": 140,
+        "x": 200,
+        "y": 100,
         "wires": [
-            [
-                "e2283beaa938c1d0"
-            ]
+            []
         ]
     },
     {
@@ -1989,9 +2060,7 @@
         "x": 200,
         "y": 260,
         "wires": [
-            [
-                "73922656ce76e98d"
-            ]
+            []
         ]
     },
     {
@@ -2114,6 +2183,142 @@
             [
                 "8ed64dc551bf8acb",
                 "8cc526b40e99a9bd"
+            ]
+        ]
+    },
+    {
+        "id": "2f471bc62024dfc3",
+        "type": "inject",
+        "z": "21278255da79a3fa",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 160,
+        "wires": [
+            [
+                "e2283beaa938c1d0"
+            ]
+        ]
+    },
+    {
+        "id": "0cad1547900aaa89",
+        "type": "inject",
+        "z": "21278255da79a3fa",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "73922656ce76e98d"
+            ]
+        ]
+    },
+    {
+        "id": "344f117f89a12b32",
+        "type": "mqtt in",
+        "z": "f34410cf8fa7c1af",
+        "name": "",
+        "topic": "tele/power_AI_node_1/SENSOR",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "c1ecb8b21360de2b",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 280,
+        "wires": [
+            [
+                "52d7c80cdedc3be2",
+                "406c32f5909535c5"
+            ]
+        ]
+    },
+    {
+        "id": "4988cf6cc4e243ac",
+        "type": "influxdb out",
+        "z": "f34410cf8fa7c1af",
+        "influxdb": "a3b679d9cd638463",
+        "name": "",
+        "measurement": "power_usage",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "na",
+        "bucket": "default",
+        "x": 780,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "52d7c80cdedc3be2",
+        "type": "debug",
+        "z": "f34410cf8fa7c1af",
+        "name": "power_usage",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "406c32f5909535c5",
+        "type": "function",
+        "z": "f34410cf8fa7c1af",
+        "name": "prepare_msg",
+        "func": "if (typeof msg.payload === \"object\") {\n    // Extract fields\n\n    // msg.measurement = \"bathroom_heater\";\n\n    msg.payload = [\n    {\n        topic: msg.topic, \n        //time: msg.payload.Time,\n        today: msg.payload.ENERGY.Today,\n        power: msg.payload.ENERGY.Power,\n        current: msg.payload.ENERGY.Current,\n        voltage: msg.payload.ENERGY.Voltage,\n    },\n    //{ tag: msg.location },\n    ];\n\n} else {\n    return null;\n}\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 460,
+        "wires": [
+            [
+                "4988cf6cc4e243ac",
+                "52d7c80cdedc3be2"
             ]
         ]
     }
