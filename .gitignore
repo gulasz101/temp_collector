@@ -4,3 +4,4 @@ influxdb2/data
 grafana/data
 flame/data/db.sqlite
 flame/data/db_backups
+.env
